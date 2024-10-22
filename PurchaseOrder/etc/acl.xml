@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="DaoNguyen_PurchaseOrder::management" title="Management" translate="title" sortOrder="100">
+                    <resource id="DaoNguyen_PurchaseOrder::po_status" title="PO Status" translate="title" sortOrder="10" />
+                    <resource id="DaoNguyen_PurchaseOrder::create" title="Create New Purchase Order" translate="title" sortOrder="20" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

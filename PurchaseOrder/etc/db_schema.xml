@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="purchase_order" resource="default" engine="innodb" comment="Purchase Order">
+        <column xsi:type="int" name="purchase_id" unsigned="true" nullable="false" identity="true" comment="Purchase ID" />
+        <column xsi:type="varchar" name="po_number" nullable="true" length="50" comment="Purchase Order Number" />
+        <column xsi:type="varchar" name="vendor_name" nullable="true" length="255" comment="Vendor Name"/>
+        <column xsi:type="varchar" name="status" nullable="true" length="32" comment="Status"/>
+        <column xsi:type="decimal" name="total" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="total"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="purchase_id"/>
+        </constraint>
+        <index referenceId="purchase_order_fulltext" indexType="fulltext">
+            <column name="po_number"/>
+            <column name="vendor_name"/>
+        </index>
+    </table>
+    <table name="purchase_order_item" resource="default" engine="innodb" comment="Purchase Order Item">
+        <column xsi:type="int" name="item_id" unsigned="true" nullable="false" identity="true" comment="Item ID"/>
+        <column xsi:type="int" name="purchase_id" unsigned="true" nullable="false" identity="false" default="0"
+                comment="Purchase Order ID"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="true" identity="false"
+                comment="Product ID"/>
+        <column xsi:type="decimal" name="qty" scale="4" precision="12" unsigned="false" nullable="true"
+                default="0" comment="Qty"/>
+        <column xsi:type="varchar" name="item_name" nullable="true" length="255" comment="Item Name"/>
+        <column xsi:type="decimal" name="price" scale="4" precision="20" unsigned="false" nullable="false" default="0"
+                comment="Price"/>
+        <column xsi:type="decimal" name="row_total" scale="4" precision="20" unsigned="false" nullable="false"
+                default="0" comment="Row Total"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="item_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PURCHASE_ORDER_ITEM_PURCHASE_ID_PURCHASE_ORDER_PURCHASE_ID"
+                    table="purchase_order_item"
+                    column="purchase_id" referenceTable="purchase_order" referenceColumn="purchase_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>

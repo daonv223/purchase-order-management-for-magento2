@@ -1,0 +1,36 @@
+{
+    "purchase_order": {
+        "column": {
+            "purchase_id": true,
+            "po_number": true,
+            "vendor_name": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true,
+            "total": true
+        },
+        "index": {
+            "PURCHASE_ORDER_PO_NUMBER_VENDOR_NAME": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "purchase_order_item": {
+        "column": {
+            "item_id": true,
+            "purchase_id": true,
+            "product_id": true,
+            "qty": true,
+            "item_name": true,
+            "price": true,
+            "row_total": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PURCHASE_ORDER_ITEM_PURCHASE_ID_PURCHASE_ORDER_PURCHASE_ID": true
+        }
+    }
+}

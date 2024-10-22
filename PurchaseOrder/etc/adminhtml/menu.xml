@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="DaoNguyen_PurchaseOrder::dashboard" title="Purchase Management" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="5" action="adminhtml/purchase" resource="DaoNguyen_PurchaseOrder::dashboard"/>
+        <add id="DaoNguyen_PurchaseOrder::management" title="Purchase Management" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="5" resource="DaoNguyen_PurchaseOrder::management" />
+        <add id="DaoNguyen_PurchaseOrder::po_status" title="PO Status" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="10" parent="DaoNguyen_PurchaseOrder::management" action="purchase/order/status" resource="DaoNguyen_PurchaseOrder::po_status" />
+        <add id="DaoNguyen_PurchaseOrder::create" title="Create New Purchase Order" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="20" parent="DaoNguyen_PurchaseOrder::management" action="purchase/order/new" resource="DaoNguyen_PurchaseOrder::create"/>
     </menu>
 </config>
