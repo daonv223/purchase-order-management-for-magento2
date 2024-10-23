@@ -32,5 +32,20 @@
             "PRIMARY": true,
             "PURCHASE_ORDER_ITEM_PURCHASE_ID_PURCHASE_ORDER_PURCHASE_ID": true
         }
+    },
+    "goods_receive_note": {
+        "column": {
+            "receive_id": true,
+            "item_id": true,
+            "qty": true,
+            "vendor_invoice_no": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "GOODS_RECEIVE_NOTE_ITEM_ID_PURCHASE_ORDER_ITEM_ITEM_ID": true
+        },
+        "index": {
+            "GOODS_RECEIVE_NOTE_VENDOR_INVOICE_NO": true
+        }
     }
 }

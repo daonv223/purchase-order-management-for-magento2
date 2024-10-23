@@ -1,0 +1,71 @@
+<?php
+/** @var \DaoNguyen\PurchaseOrder\Block\Adminhtml\Purchase\Goods\Create\Form $block */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+<form id="edit_form" method="post" action="<?= $block->escapeUrl($block->getSaveUrl()) ?>">
+    <?= $block->getBlockHtml('formkey') ?>
+    <div id="grn_items_container">
+        <section class="admin__page-section">
+            <div class="admin__page-section-title">
+                <span class="title"><?= $block->escapeHtml(__('Items to Create GRN')) ?></span>
+            </div>
+            <div class="admin__table-wrapper">
+                <table class="data-table admin__table-primary grn-table order-shipment-table">
+                    <thead>
+                        <tr class="headings">
+                            <th class="col-product"><span><?= $block->escapeHtml(__('Item')) ?></span></th>
+                            <th class="col-ordered-qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></th>
+                            <th class="col-qty">
+                                <span><?= $block->escapeHtml(__('Received Qty')) ?></span>
+                            </th>
+                            <th class="col-qty last">
+                                <span><?= $block->escapeHtml(__('Vendor Invoice No.')) ?></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <?php $items = $block->getItems() ?>
+                    <?php $i = 0; foreach ($items as $item):
+                        $i++ ?>
+                        <tbody class="<?= $i%2 ? 'odd' : 'even' ?>">
+                            <tr>
+                                <td class="col-product">
+                                    <div id="order_item_2_title" class="product-title"><?= $block->escapeHtml($item->getData('item_name')) ?></div>
+                                </td>
+                                <td class="col-ordered-qty">
+                                    <table class="qty-table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Ordered</th>
+                                                <td><?= $block->escapeHtml($item->getData('qty')) ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td class="col-qty">
+                                    <input type="text" class="input-text admin__control-text qty-item" name="grn[items][<?= $item->getData('item_id') ?>][qty]">
+                                </td>
+                                <td class="col-no last">
+                                    <input type="text" class="input-text admin__control-text qty-item" name="grn[items][<?= $item->getData('item_id') ?>][no]">
+                                </td>
+                            </tr>
+                        </tbody>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </section>
+    </div>
+</form>
+<div class="actions">
+    <?= $block->getChildHtml('submit_button') ?>
+</div>
+<?php $scriptString = <<<script
+    require([
+        "jquery"
+    ], function(jQuery) {
+        window.submitGRN = function(btn) {
+            jQuery('#edit_form').trigger('submit');
+        }
+    });
+script;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>

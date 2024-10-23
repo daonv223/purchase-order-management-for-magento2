@@ -4,5 +4,7 @@
         <add id="DaoNguyen_PurchaseOrder::management" title="Purchase Management" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="5" resource="DaoNguyen_PurchaseOrder::management" />
         <add id="DaoNguyen_PurchaseOrder::po_status" title="PO Status" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="10" parent="DaoNguyen_PurchaseOrder::management" action="purchase/order/status" resource="DaoNguyen_PurchaseOrder::po_status" />
         <add id="DaoNguyen_PurchaseOrder::create" title="Create New Purchase Order" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="20" parent="DaoNguyen_PurchaseOrder::management" action="purchase/order/new" resource="DaoNguyen_PurchaseOrder::create"/>
+        <add id="DaoNguyen_PurchaseOrder::goods_receive_note" title="Goods Receive Note" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="30" parent="DaoNguyen_PurchaseOrder::management" action="purchase/goods/index" resource="DaoNguyen_PurchaseOrder::goods_receive_note"/>
+        <add id="DaoNguyen_PurchaseOrder::goods_receive_note_archive" title="Goods Receive Note Archive" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="40" parent="DaoNguyen_PurchaseOrder::management" action="purchase/goods/archive" resource="DaoNguyen_PurchaseOrder::goods_receive_note_archive"/>
     </menu>
 </config>
