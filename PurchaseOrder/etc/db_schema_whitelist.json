@@ -47,5 +47,35 @@
         "index": {
             "GOODS_RECEIVE_NOTE_VENDOR_INVOICE_NO": true
         }
+    },
+    "purchase_template": {
+        "column": {
+            "template_id": true,
+            "title": true,
+            "vendor_name": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "PURCHASE_TEMPLATE_TITLE_VENDOR_NAME": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "purchase_template_item": {
+        "column": {
+            "item_id": true,
+            "template_id": true,
+            "product_id": true,
+            "qty": true,
+            "item_name": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PURCHASE_TEMPLATE_ITEM_TEMPLATE_ID_PURCHASE_TEMPLATE_TEMPLATE_ID": true
+        }
     }
 }

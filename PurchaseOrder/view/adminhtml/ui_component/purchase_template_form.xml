@@ -2,38 +2,38 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">purchase_order_form.purchase_order_form_data_source</item>
+            <item name="provider" xsi:type="string">purchase_template_form.purchase_template_form_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Purchase Order Information</item>
+        <item name="label" xsi:type="string" translate="true">PO Template Information</item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="DaoNguyen\PurchaseOrder\Block\Adminhtml\Purchase\Order\Edit\SaveButton"/>
-            <button name="back" class="DaoNguyen\PurchaseOrder\Block\Adminhtml\Purchase\Order\Edit\BackButton"/>
+            <button name="save" class="DaoNguyen\PurchaseOrder\Block\Adminhtml\Purchase\Template\Edit\SaveButton"/>
+            <button name="back" class="DaoNguyen\PurchaseOrder\Block\Adminhtml\Purchase\Template\Edit\BackButton"/>
         </buttons>
-        <namespace>purchase_order_form</namespace>
+        <namespace>purchase_template_form</namespace>
         <dataScope>data</dataScope>
         <deps>
-            <dep>purchase_order_form.purchase_order_form_data_source</dep>
+            <dep>purchase_template_form.purchase_template_form_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="purchase_order_form_data_source">
+    <dataSource name="purchase_template_form_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
         <settings>
-            <submitUrl path="purchase/order/save"/>
+            <submitUrl path="purchase/template/save"/>
         </settings>
-        <dataProvider class="DaoNguyen\PurchaseOrder\Model\PurchaseOrder\DataProvider" name="purchase_order_form_data_source">
+        <dataProvider class="DaoNguyen\PurchaseOrder\Model\PurchaseTemplate\DataProvider" name="purchase_template_form_data_source">
             <settings>
                 <clientConfig>
                     <param name="validateBeforeSave" xsi:type="boolean">false</param>
                 </clientConfig>
                 <requestFieldName>id</requestFieldName>
-                <primaryFieldName>purchase_id</primaryFieldName>
+                <primaryFieldName>template_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
@@ -41,32 +41,21 @@
         <settings>
             <label/>
         </settings>
-        <field name="purchase_id" formElement="input">
+        <field name="template_id" formElement="input">
             <settings>
                 <dataType>text</dataType>
                 <visible>false</visible>
-                <dataScope>purchase_id</dataScope>
+                <dataScope>template_id</dataScope>
             </settings>
         </field>
-        <field name="template" formElement="select" sortOrder="5" component="DaoNguyen_PurchaseOrder/js/form/element/select">
+        <field name="title" sortOrder="10" formElement="input">
             <settings>
-                <label translate="true">PO Template</label>
-            </settings>
-            <formElements>
-                <select>
-                    <settings>
-                        <options class="DaoNguyen\PurchaseOrder\Ui\Component\TemplateOption"/>
-                    </settings>
-                </select>
-            </formElements>
-        </field>
-        <field name="po_number" sortOrder="10" formElement="input">
-            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
                 <dataType>text</dataType>
-                <label translate="true">PO No.</label>
-                <dataScope>po_number</dataScope>
-                <disabled>true</disabled>
-                <placeholder>Auto Generate</placeholder>
+                <label translate="true">Template Title</label>
+                <dataScope>title</dataScope>
             </settings>
         </field>
         <field name="vendor_name" sortOrder="20" formElement="select">
@@ -88,12 +77,12 @@
             </formElements>
         </field>
     </fieldset>
-    <fieldset name="purchase_order_items_container">
+    <fieldset name="purchase_template_items_container">
         <settings>
             <collapsible>false</collapsible>
-            <label translate="true">Purchase Order Items</label>
+            <label translate="true">Purchase Template Items</label>
         </settings>
-        <dynamicRows name="purchase_order_items">
+        <dynamicRows name="purchase_template_items">
             <settings>
                 <addButtonLabel translate="true">Add Item</addButtonLabel>
                 <additionalClasses>
@@ -136,23 +125,7 @@
                         <dataScope>item_name</dataScope>
                         <componentType>field</componentType>
                     </settings>
-                    <formElements>
-                        <select>
-                            <settings>
-                                <options class="DaoNguyen\PurchaseOrder\Model\Product"/>
-                                <caption translate="true">-- Please Select --</caption>
-                            </settings>
-                        </select>
-                    </formElements>
                 </field>
-<!--                <field name="unit_price" formElement="input" sortOrder="20">-->
-<!--                    <settings>-->
-<!--                        <dataType>number</dataType>-->
-<!--                        <dataScope>unit_price</dataScope>-->
-<!--                        <label translate="true">Unit Price</label>-->
-<!--                        <labelVisible>false</labelVisible>-->
-<!--                    </settings>-->
-<!--                </field>-->
                 <field name="qty" formElement="input" sortOrder="30">
                     <settings>
                         <dataType>number</dataType>
@@ -161,14 +134,6 @@
                         <labelVisible>false</labelVisible>
                     </settings>
                 </field>
-<!--                <field name="amount" formElement="input" sortOrder="40">-->
-<!--                    <settings>-->
-<!--                        <dataType>number</dataType>-->
-<!--                        <dataScope>amount</dataScope>-->
-<!--                        <label translate="true">Amount</label>-->
-<!--                        <labelVisible>false</labelVisible>-->
-<!--                    </settings>-->
-<!--                </field>-->
             </container>
         </dynamicRows>
     </fieldset>
