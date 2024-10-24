@@ -2,16 +2,16 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">good_receive_listing.good_receive_listing_data_source</item>
+            <item name="provider" xsi:type="string">goods_receive_archive_listing.goods_receive_archive_listing_data_source</item>
         </item>
     </argument>
     <settings>
         <spinner>good_receive_columns</spinner>
         <deps>
-            <dep>good_receive_listing.good_receive_listing_data_source</dep>
+            <dep>goods_receive_archive_listing.goods_receive_archive_listing_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="good_receive_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="goods_receive_archive_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
                 <param name="indexField" xsi:type="string">receive_id</param>
@@ -19,7 +19,7 @@
             <updateUrl path="mui/index/render" />
         </settings>
         <aclResource>DaoNguyen_PurchaseOrder::goods_receive_note_archive</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="good_receive_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="goods_receive_archive_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>main_table.receive_id</primaryFieldName>
@@ -40,16 +40,16 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-<!--        <column name="item_id">-->
-<!--            <settings>-->
-<!--                <label translate="true">Item ID</label>-->
-<!--            </settings>-->
-<!--        </column>-->
-<!--        <column name="qty">-->
-<!--            <settings>-->
-<!--                <label translate="true">Qty</label>-->
-<!--            </settings>-->
-<!--        </column>-->
+        <column name="item_id">
+            <settings>
+                <label translate="true">Item ID</label>
+            </settings>
+        </column>
+        <column name="qty">
+            <settings>
+                <label translate="true">Qty</label>
+            </settings>
+        </column>
         <column name="vendor_invoice_no">
             <settings>
                 <filter>text</filter>

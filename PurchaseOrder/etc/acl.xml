@@ -6,8 +6,8 @@
                 <resource id="DaoNguyen_PurchaseOrder::management" title="Management" translate="title" sortOrder="100">
                     <resource id="DaoNguyen_PurchaseOrder::po_status" title="PO Status" translate="title" sortOrder="10" />
                     <resource id="DaoNguyen_PurchaseOrder::create" title="Create New Purchase Order" translate="title" sortOrder="20" />
-                    <resource id="DaoNguyen_PurchaseOrder::goods_receive_note" title="Create New Purchase Order" translate="title" sortOrder="30" />
-                    <resource id="DaoNguyen_PurchaseOrder::goods_receive_note_archive" title="Create New Purchase Order" translate="title" sortOrder="40" />
+                    <resource id="DaoNguyen_PurchaseOrder::goods_receive_note" title="Good Receive Note" translate="title" sortOrder="30" />
+                    <resource id="DaoNguyen_PurchaseOrder::goods_receive_note_archive" title="Good Receive Note Archive" translate="title" sortOrder="40" />
                 </resource>
             </resource>
         </resources>

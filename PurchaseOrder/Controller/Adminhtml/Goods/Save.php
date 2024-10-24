@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace DaoNguyen\PurchaseOrder\Controller\Adminhtml\Goods;
 
 use DaoNguyen\PurchaseOrder\Model\GoodsReceiveNote;
+use DaoNguyen\PurchaseOrder\Model\PurchaseOrder;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 
 class Save extends \Magento\Backend\App\Action implements HttpPostActionInterface

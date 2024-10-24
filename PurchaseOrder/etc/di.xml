@@ -6,7 +6,7 @@
             <argument name="collections" xsi:type="array">
                 <item name="purchase_order_grid_data_source" xsi:type="string">DaoNguyen\PurchaseOrder\Model\ResourceModel\PurchaseOrder\Grid\Collection</item>
                 <item name="purchase_order_listing_data_source" xsi:type="string">DaoNguyen\PurchaseOrder\Model\ResourceModel\PurchaseOrder\Grid\Collection</item>
-                <item name="good_receive_listing_data_source" xsi:type="string">DaoNguyen\PurchaseOrder\Ui\Component\Listing\Goods\Collection</item>
+                <item name="goods_receive_archive_listing_data_source" xsi:type="string">DaoNguyen\PurchaseOrder\Ui\Component\Listing\Goods\Collection</item>
             </argument>
         </arguments>
     </type>
