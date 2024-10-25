@@ -109,29 +109,9 @@
                         <item name="componentType" xsi:type="string">container</item>
                     </item>
                 </argument>
-                <field name="item_name" component="Magento_Catalog/js/components/product-ui-select" sortOrder="10" formElement="select">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="disableLabel" xsi:type="boolean">true</item>
-                            <item name="filterOptions" xsi:type="boolean">true</item>
-                            <item name="searchOptions" xsi:type="boolean">true</item>
-                            <item name="chipsEnabled" xsi:type="boolean">true</item>
-                            <item name="levelsVisibility" xsi:type="number">1</item>
-                            <item name="multiple" xsi:type="boolean">false</item>
-                            <item name="closeBtn" xsi:type="boolean">true</item>
-                            <item name="filterPlaceholder" xsi:type="string" translate="true">Product Name or SKU</item>
-                            <item name="filterRateLimitMethod" xsi:type="string">notifyWhenChangesStop</item>
-                            <item name="searchUrl" xsi:type="url" path="catalog/product/search"/>
-                            <item name="showCheckbox" xsi:type="boolean">false</item>
-                            <item name="isRemoveSelectedIcon" xsi:type="boolean">false</item>
-                            <item name="isDisplayEmptyPlaceholder" xsi:type="boolean">true</item>
-                            <item name="emptyOptionsHtml" xsi:type="string" translate="true">Start typing to find products</item>
-                            <item name="missingValuePlaceholder" xsi:type="string" translate="true">Product with ID: %s doesn\'t exist</item>
-                            <item name="isDisplayMissingValuePlaceholder" xsi:type="boolean">true</item>
-                        </item>
-                    </argument>
+                <field name="item_name" sortOrder="10" formElement="select">
                     <settings>
-                        <elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
+                        <dataType>text</dataType>
                         <label translate="true">Item Name</label>
                         <dataScope>item_name</dataScope>
                         <componentType>field</componentType>
@@ -145,14 +125,6 @@
                         </select>
                     </formElements>
                 </field>
-<!--                <field name="unit_price" formElement="input" sortOrder="20">-->
-<!--                    <settings>-->
-<!--                        <dataType>number</dataType>-->
-<!--                        <dataScope>unit_price</dataScope>-->
-<!--                        <label translate="true">Unit Price</label>-->
-<!--                        <labelVisible>false</labelVisible>-->
-<!--                    </settings>-->
-<!--                </field>-->
                 <field name="qty" formElement="input" sortOrder="30">
                     <settings>
                         <dataType>number</dataType>
@@ -161,14 +133,20 @@
                         <labelVisible>false</labelVisible>
                     </settings>
                 </field>
-<!--                <field name="amount" formElement="input" sortOrder="40">-->
-<!--                    <settings>-->
-<!--                        <dataType>number</dataType>-->
-<!--                        <dataScope>amount</dataScope>-->
-<!--                        <label translate="true">Amount</label>-->
-<!--                        <labelVisible>false</labelVisible>-->
-<!--                    </settings>-->
-<!--                </field>-->
+                <actionDelete name="action_delete">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="prefixElementName" xsi:type="string">option_</item>
+                            <item name="prefixName" xsi:type="string">optiontext.delete</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <elementTmpl>Magento_Catalog/form/element/action-delete</elementTmpl>
+                        <dataType>text</dataType>
+                        <componentType>actionDelete</componentType>
+                    </settings>
+                </actionDelete>
             </container>
         </dynamicRows>
     </fieldset>

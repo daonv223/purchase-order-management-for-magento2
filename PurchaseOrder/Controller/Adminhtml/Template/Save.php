@@ -34,6 +34,6 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
             $purchaseTemplateItem->save();
         }
 
-        return $redirect->setPath('purchase/order/status');
+        return $redirect->setPath('purchase/template/view', ['template_id' => $template->getId()]);
     }
 }

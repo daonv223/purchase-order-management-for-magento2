@@ -55,6 +55,6 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
         }
         $purchaseOrder->setTotal($total);
         $this->resourcePurchaseOrder->save($purchaseOrder);
-        return $redirect->setPath('*/*/status');
+        return $redirect->setPath('*/*/view', ['purchase_id' => $purchaseOrder->getId()]);
     }
 }

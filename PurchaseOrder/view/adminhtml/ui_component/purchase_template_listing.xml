@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">purchase_template_listing.purchase_template_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>purchase_template_columns</spinner>
+        <deps>
+            <dep>purchase_template_listing.purchase_template_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="purchase_template_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">template_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render" />
+        </settings>
+        <aclResource>DaoNguyen_PurchaseOrder::po_template</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="purchase_template_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>main_table.template_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filterSearch name="fulltext" />
+        <filters name="listing_filters" />
+        <paging name="listing_paging" />
+    </listingToolbar>
+    <columns name="purchase_template_columns">
+        <column name="template_id">
+            <settings>
+                <label translate="true">Template ID</label>
+            </settings>
+        </column>
+        <column name="title">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Template Title</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="DaoNguyen\PurchaseOrder\Ui\Component\Listing\Column\ViewTemplateAction">
+            <settings>
+                <indexField>template_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

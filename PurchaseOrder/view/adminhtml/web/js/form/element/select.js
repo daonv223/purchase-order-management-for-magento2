@@ -22,15 +22,27 @@ define([
                     uiRegistry.get('purchase_order_form.purchase_order_form.general.vendor_name').value(option.templateData.vendor_name);
                     const items = option.items;
 
+                    let records = [];
                     for (let i = 0; i < items.length; i++) {
-                        uiRegistry.get('purchase_order_form.purchase_order_form.purchase_order_items_container.purchase_order_items')
-                            .processingAddChild();
-                        uiRegistry.get(`purchase_order_form.purchase_order_form.purchase_order_items_container.purchase_order_items.${i}.item_name`).value(items[i].product_id);
-                        uiRegistry.get(`purchase_order_form.purchase_order_form.purchase_order_items_container.purchase_order_items.${i}.qty`).value(items[i].qty);
+                        records.push({
+                            qty: parseInt(items[i].qty),
+                            record_id: i,
+                            item_name: items[i].product_id
+                        });
                     }
+                    uiRegistry.get('purchase_order_form.purchase_order_form.purchase_order_items_container.purchase_order_items').recordData(records);
+                    for (let i = 0; i < items.length; i++) {
+                        uiRegistry.get('purchase_order_form.purchase_order_form.purchase_order_items_container.purchase_order_items').addChild(
+                            {
+                                qty: items[i].qty,
+                                item_name: items[i].product_id
+                            },
+                            i
+                        )
+                    }
+
                 }
             });
-            // 'purchase_order_form.purchase_order_form.purchase_order_items_container.purchase_order_items'
             return this;
         }
     });

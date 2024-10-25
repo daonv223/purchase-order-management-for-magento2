@@ -24,6 +24,6 @@ class BackButton implements ButtonProviderInterface
 
     private function getBackUrl()
     {
-        return $this->context->getUrlBuilder()->getUrl('*/*/status');
+        return $this->context->getUrlBuilder()->getUrl('*/template/index');
     }
 }

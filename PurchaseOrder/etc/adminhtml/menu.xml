@@ -7,5 +7,6 @@
         <add id="DaoNguyen_PurchaseOrder::goods_receive_note" title="Goods Receive Note" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="30" parent="DaoNguyen_PurchaseOrder::management" action="purchase/goods/index" resource="DaoNguyen_PurchaseOrder::goods_receive_note"/>
         <add id="DaoNguyen_PurchaseOrder::goods_receive_note_archive" title="Goods Receive Note Archive" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="40" parent="DaoNguyen_PurchaseOrder::management" action="purchase/goods/archive" resource="DaoNguyen_PurchaseOrder::goods_receive_note_archive"/>
         <add id="DaoNguyen_PurchaseOrder::create_po_template" title="Create New PO Template" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="50" parent="DaoNguyen_PurchaseOrder::management" action="purchase/template/new" resource="DaoNguyen_PurchaseOrder::create_po_template"/>
+        <add id="DaoNguyen_PurchaseOrder::po_template" title="PO Template" translate="title" module="DaoNguyen_PurchaseOrder" sortOrder="60" parent="DaoNguyen_PurchaseOrder::management" action="purchase/template/index" resource="DaoNguyen_PurchaseOrder::po_template"/>
     </menu>
 </config>
